@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-
+import 'express-async-errors';
 import express from 'express';
 
 import notFoundMiddleware from './middleware/not-found.js';
@@ -7,10 +7,12 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 // router:
 import authRouter from './routes/authRoutes.js';
 import jobsRouter from './routes/jobsRoutes.js';
+
 // db:
 import connectDB from './db/connect.js';
 
 const app = express();
+app.use(express.json());
 
 dotenv.config();
 app.get('/', (req, res) => {
