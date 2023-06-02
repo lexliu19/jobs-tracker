@@ -16,7 +16,11 @@ app.use(express.json());
 
 dotenv.config();
 app.get('/', (req, res) => {
-  res.send('Welcome');
+  res.json({ msg: 'welcome' });
+});
+
+app.get('/api/v1', (req, res) => {
+  res.json({ msg: 'welcome' });
 });
 
 app.use('/api/v1/auth', authRouter);
