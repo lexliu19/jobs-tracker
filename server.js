@@ -11,7 +11,13 @@ import jobsRouter from './routes/jobsRoutes.js';
 // db:
 import connectDB from './db/connect.js';
 
+import morgan from 'morgan';
+
 const app = express();
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'));
+}
 app.use(express.json());
 
 dotenv.config();
