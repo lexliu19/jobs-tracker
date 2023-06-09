@@ -9,8 +9,7 @@ const Register = () => {
   const initialState = { name: '', email: '', password: '', isMember: false };
   const [values, setValues] = useState(initialState);
 
-  const { user, isLoading, showAlert, displayAlert, registerUser, loginUser, setupUser } =
-    useAppContext();
+  const { user, isLoading, showAlert, displayAlert, setupUser } = useAppContext();
   const navigate = useNavigate();
 
   useEffect(() => {
