@@ -53,7 +53,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === TOGGLE_SIDEBAR) {
-    return { ...state, showSideBar: !state.showSideBar };
+    return { ...state, showSidebar: !state.showSidebar };
   }
 
   if (action.type === LOGOUT_USER) {
