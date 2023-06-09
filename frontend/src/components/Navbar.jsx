@@ -1,11 +1,15 @@
 import Wrapper from '../assets/wrappers/Navbar';
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa';
 import Logo from './Logo';
+import { useAppContext } from '../context/appContext';
+import { useState } from 'react';
 const Navbar = () => {
+  const [showLogout, setShowLogout] = useState(false);
+  const { user, toggleSidebar, logoutUser } = useAppContext();
   return (
     <Wrapper>
       <div className="nav-center">
-        <button className="toggle-btn" onClick={() => console.log('toggle sidebar')}>
+        <button className="toggle-btn" onClick={toggleSidebar}>
           <FaAlignLeft />
         </button>
 
@@ -15,14 +19,14 @@ const Navbar = () => {
         </div>
 
         <div className="btn-container">
-          <button className="btn" onClick={() => console.log('show logout')}>
+          <button className="btn" onClick={() => setShowLogout(!showLogout)}>
             <FaUserCircle />
-            tester
+            {user?.name}
             <FaCaretDown />
           </button>
 
-          <div className="dropdown show-dropdown">
-            <button className="dropdown-btn" onClick={() => console.log('logout user')}>
+          <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
+            <button className="dropdown-btn" onClick={() => logoutUser()}>
               Logout
             </button>
           </div>
