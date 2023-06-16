@@ -1,8 +1,7 @@
 import './App.css';
 import { Landing, Register, Error, ProtectedRoute } from './pages/index.js';
-
-import { AddJob, AllJobs, Profile, Stats, ShareLayout } from './pages/dashboard/index';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { AddJob, AllJobs, Profile, Stats, ShareLayout } from './pages/dashboard/index.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
@@ -16,7 +15,7 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route path="stats" element={<Stats />} />
+            <Route index element={<Stats />} />
             <Route path="all-jobs" element={<AllJobs />} />
             <Route path="add-job" element={<AddJob />} />
             <Route path="profile" element={<Profile />} />

@@ -1,4 +1,4 @@
 const Stats = () => {
-  return <div>Stats</div>;
+  return <div>this is test </div>;
 };
 export default Stats;

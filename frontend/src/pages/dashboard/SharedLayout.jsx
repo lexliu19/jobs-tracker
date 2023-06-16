@@ -9,10 +9,11 @@ const ShareLayout = () => {
         <BigSidebar />
         <div>
           <Navbar />
-          <div className="dashboard-page"></div>
+          <div className="dashboard-page">
+            <Outlet />
+          </div>
         </div>
       </main>
-      <Outlet />
     </Wrapper>
   );
 };
