@@ -54,8 +54,9 @@ const AppProvider = ({ children }) => {
       return response;
     },
     (error) => {
-      if (error.response === 401) {
-        console.log('Auth Error');
+      console.log(error.response);
+      if (error.response.status === 401) {
+        logoutUser();
       }
       return Promise.reject(error);
     }
@@ -116,11 +117,15 @@ const AppProvider = ({ children }) => {
       });
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
-      dispatch({
-        type: UPDATE_USER_ERROR,
-        payload: { msg: error.response.data.msg },
-      });
+      if (error.response.status !== 401) {
+        // if error is unauth error, don't show error msg
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+      }
     }
+    clearAlert();
   };
 
   const toggleSidebar = () => {
