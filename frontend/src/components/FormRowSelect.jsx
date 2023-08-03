@@ -1,10 +1,4 @@
-const FormRowSelect = ({
-  labelText,
-  name,
-  value,
-  handleJobInput,
-  dataList,
-}) => {
+const FormRowSelect = ({ labelText, name, value, handleChange, dataList }) => {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
@@ -13,7 +7,7 @@ const FormRowSelect = ({
       <select
         name={name}
         value={value}
-        onChange={handleJobInput}
+        onChange={handleChange}
         className="form-select"
       >
         {dataList.map((item, index) => {

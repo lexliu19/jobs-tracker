@@ -1,8 +1,10 @@
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { useAppContext } from '../../context/appContext';
 import { Alert, FormRow, FormRowSelect } from '../../components/index';
+
 const AddJob = () => {
   const {
+    isLoading,
     isEditing,
     showAlert,
     displayAlert,
@@ -13,24 +15,25 @@ const AddJob = () => {
     jobTypeOptions,
     status,
     statusOptions,
+    handleChange,
+    clearValues,
+    createJob,
   } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!position || !company || !jobLocation) {
       displayAlert();
       return;
     }
 
-    console.log('create ');
+    console.log(position, company, jobLocation);
+    if (isEditing) return;
+    createJob();
   };
 
   const handleJobInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    console.log(name, value);
+    handleChange({ name: e.target.name, value: e.target.value });
   };
   return (
     <Wrapper>
@@ -42,21 +45,21 @@ const AddJob = () => {
           <FormRow
             type="text"
             name="position"
-            value="position"
+            value={position}
             handleChange={handleJobInput}
           />
 
           <FormRow
             type="text"
             name="company"
-            value="company"
+            value={company}
             handleChange={handleJobInput}
           />
           <FormRow
             type="text"
             labelText="location"
             name="jobLocation"
-            value="jobLocation"
+            value={jobLocation}
             handleChange={handleJobInput}
           />
 
@@ -80,8 +83,20 @@ const AddJob = () => {
               className="btn btn-block submit-btn"
               type="submit"
               onClick={handleSubmit}
+              disabled={isLoading}
             >
               Submit
+            </button>
+
+            <button
+              className="btn btn-block clear-btn"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+              }}
+            >
+              Clear
             </button>
           </div>
         </div>
