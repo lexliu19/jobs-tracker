@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Logo, FormRow, Alert } from '../components/index.js';
 import { useAppContext } from '../context/appContext.js';
-import Wrapper from '../assets/wrappers/RegisterPage';
+import Wrapper from '../assets/wrappers/RegisterPage.js';
 
 const Register = () => {
   const initialState = { name: '', email: '', password: '', isMember: false };

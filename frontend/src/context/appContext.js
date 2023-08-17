@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import reducer from './reducer';
 import {
   DISPLAY_ALERT,
@@ -16,6 +16,9 @@ import {
   CREATE_JOB_BEGIN,
   CREATE_JOB_SUCCESS,
   CREATE_JOB_ERROR,
+  GET_JOBS_BEGIN,
+  GET_JOBS_SUCCESS,
+  SET_EDIT_JOB,
 } from './actions';
 
 import axios from 'axios';
@@ -32,6 +35,8 @@ const initialState = {
   userLocation: userLocation || '',
   jobLocation: userLocation || '',
   showSidebar: false,
+
+  //add job:
   isEditing: false,
   editJobId: '',
   company: '',
@@ -40,6 +45,12 @@ const initialState = {
   jobType: 'Full-Time',
   statusOptions: ['Interview', 'Declined', 'Pending'],
   status: 'Pending',
+
+  //get jobs:
+  jobs: [],
+  totalJobs: 0,
+  numOfPages: 1,
+  page: 1,
 };
 
 const AppContext = React.createContext();
@@ -130,7 +141,7 @@ const AppProvider = ({ children }) => {
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
       if (error.response.status !== 401) {
-        // if error is unauth error, don't show error msg
+        // if error is un-auth error, don't show error msg
         dispatch({
           type: UPDATE_USER_ERROR,
           payload: { msg: error.response.data.msg },
@@ -183,6 +194,40 @@ const AppProvider = ({ children }) => {
 
     clearAlert();
   };
+
+  const getJobs = async () => {
+    let url = '/jobs';
+
+    dispatch({ type: GET_JOBS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { jobs, totalJobs, numOfPages } = data;
+
+      dispatch({
+        type: GET_JOBS_SUCCESS,
+        payload: {
+          jobs,
+          totalJobs,
+          numOfPages,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+      logoutUser();
+    }
+
+    clearAlert();
+  };
+
+  const setEditJob = (id) => {
+    dispatch({ type: SET_EDIT_JOB, payload: { id } });
+  };
+
+  const editJob = () => console.log('edit Job');
+  const deleteJob = (id) => {
+    console.log(`delete job ${id}`);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -195,6 +240,10 @@ const AppProvider = ({ children }) => {
         handleChange,
         clearValues,
         createJob,
+        getJobs,
+        setEditJob,
+        deleteJob,
+        editJob,
       }}
     >
       {children}
