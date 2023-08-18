@@ -61,7 +61,7 @@ const initialState = {
 
   //stats
   stats: {},
-  monthlyApplication: [],
+  monthlyApplications: [],
 };
 
 const AppContext = React.createContext();
@@ -281,7 +281,7 @@ const AppProvider = ({ children }) => {
         type: SHOW_STATS_SUCCESS,
         payload: {
           stats: data.defaultStats,
-          monthlyApplication: data.monthlyApplication,
+          monthlyApplications: data.monthlyApplications,
         },
       });
     } catch (error) {
