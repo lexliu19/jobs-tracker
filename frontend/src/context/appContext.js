@@ -275,7 +275,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SHOW_STATS_BEGIN });
 
     try {
-      const data = await authFetch('/jobs/stats');
+      const { data } = await authFetch('/jobs/stats');
 
       dispatch({
         type: SHOW_STATS_SUCCESS,

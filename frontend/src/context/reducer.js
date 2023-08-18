@@ -216,7 +216,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       stats: action.payload.stats,
-      monthlyApplication: action.payload.monthlyApplication,
+      monthlyApplications: action.payload.monthlyApplications,
     };
   }
   throw new Error(`No such action:${action.type}`);
