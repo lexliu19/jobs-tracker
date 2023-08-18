@@ -1,6 +1,6 @@
 import Wrapper from '../assets/wrappers/StatsContainer';
 import { useAppContext } from '../context/appContext';
-import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from 'react-icons/fa';
+import { FaSuitcaseRolling, FaCalendarCheck, FaBan } from 'react-icons/fa';
 import { StatItem } from '../components/index';
 const StatsContainer = () => {
   const stats = useAppContext();
@@ -22,7 +22,7 @@ const StatsContainer = () => {
     {
       title: 'jobs declined',
       count: stats.declined || 0,
-      icon: <FaBug />,
+      icon: <FaBan />,
       color: '#d66a6a',
       bcg: '#ffeeee',
     },
