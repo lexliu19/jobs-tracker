@@ -25,6 +25,8 @@ import {
   EDIT_JOB_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
+  CHANGE_PAGE,
+  CLEAR_FILTERS,
 } from './actions';
 
 import axios from 'axios';
@@ -214,7 +216,9 @@ const AppProvider = ({ children }) => {
   };
 
   const getJobs = async () => {
-    let url = '/jobs';
+    const { page, search, searchStatus, searchType, sort } = state;
+
+    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
 
     dispatch({ type: GET_JOBS_BEGIN });
     try {
@@ -298,8 +302,12 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const clearFilter = () => {
-    console.log('Clear Filters');
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
 
   return (
@@ -319,7 +327,8 @@ const AppProvider = ({ children }) => {
         deleteJob,
         editJob,
         showStats,
-        clearFilter,
+        clearFilters,
+        changePage,
       }}
     >
       {children}
