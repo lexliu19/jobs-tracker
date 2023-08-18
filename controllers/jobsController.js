@@ -16,7 +16,38 @@ const createJob = async (req, res) => {
 };
 
 const getAllJobs = async (req, res) => {
-  const jobs = await Job.find({ createdBy: req.user.userId });
+  const { search, status, jobType, sort } = req.query;
+  const queryObj = { createdBy: req.user.userId };
+  if (status !== 'all') {
+    queryObj.status = status;
+  }
+
+  if (jobType !== 'all') {
+    queryObj.jobType = jobType;
+  }
+
+  //match search word:
+  if (search) {
+    queryObj.position = { $regex: search, $options: 'i' }; // not case sensitive
+  }
+
+  // don't await, or we'll get result right now
+  let result = Job.find(queryObj);
+
+  if (sort === 'latest') {
+    result = result.sort('-createdAt');
+  }
+  if (sort === 'oldest') {
+    result = result.sort('createdAt');
+  }
+  if (sort === 'a-z') {
+    result = result.sort('position');
+  }
+  if (sort === 'z-a') {
+    result = result.sort('-position');
+  }
+
+  const jobs = await result;
 
   res
     .status(StatusCodes.OK)
