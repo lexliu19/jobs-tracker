@@ -14,25 +14,27 @@ import connectDB from './db/connect.js';
 
 import morgan from 'morgan';
 
+import { dirname } from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 const app = express();
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 app.use(express.json());
+app.use(express.static(path.resolve(__dirname, './frontend/build')));
 
 dotenv.config();
-app.get('/', (req, res) => {
-  res.json({ msg: 'welcome' });
-});
-
-app.get('/api/v1', (req, res) => {
-  res.json({ msg: 'welcome' });
-});
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', authenticateUser, jobsRouter);
-
+app.get('*', (req, res) =>
+  res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'))
+);
 // middleware:
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
