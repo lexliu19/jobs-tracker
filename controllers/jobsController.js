@@ -17,12 +17,13 @@ const createJob = async (req, res) => {
 
 const getAllJobs = async (req, res) => {
   const { search, status, jobType, sort } = req.query;
+
   const queryObj = { createdBy: req.user.userId };
-  if (status !== 'all') {
+  if (status && status !== 'all') {
     queryObj.status = status;
   }
 
-  if (jobType !== 'all') {
+  if (jobType && jobType !== 'all') {
     queryObj.jobType = jobType;
   }
 
