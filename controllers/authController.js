@@ -1,7 +1,7 @@
 import User from '../models/user.js';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, UnauthenticatedError } from '../errors/index.js';
-
+import attachCookies from '../utils/attachCookies.js';
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -13,6 +13,8 @@ const register = async (req, res) => {
 
   const user = await User.create({ name, email, password });
   const token = user.createJWT();
+
+  attachCookies({ res, token });
   res.status(StatusCodes.CREATED).json({
     user: {
       email: user.email,
@@ -43,6 +45,7 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) throw new UnauthenticatedError('Invalid Credentials');
 
   const token = user.createJWT();
+  attachCookies({ res, token });
 
   res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
@@ -60,6 +63,7 @@ const updateUser = async (req, res) => {
   user.location = location;
   await user.save();
   const token = user.createJWT();
+  attachCookies({ res, token });
   res.status(StatusCodes.OK).json({
     user,
     token,
