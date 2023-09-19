@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import reducer from './reducer';
 import {
   DISPLAY_ALERT,
@@ -27,6 +27,8 @@ import {
   SHOW_STATS_SUCCESS,
   CHANGE_PAGE,
   CLEAR_FILTERS,
+  GET_CURRENT_USER_BEGIN,
+  GET_CURRENT_USER_SUCCESS,
 } from './actions';
 
 import axios from 'axios';
@@ -71,26 +73,24 @@ const initialState = {
   searchType: 'all',
   sort: 'latest',
   sortOptions: ['latest', 'oldest', 'a-z', 'z-a'],
+
+  //get current user: only use when loading user
+  userLoading: true,
 };
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
   //axios instance:
   const authFetch = axios.create({
     baseURL: '/api/v1',
   });
-  //request:
-  // authFetch.interceptors.request.use(
-  //   (config) => {
-  //     config.headers['Authorization'] = `Bearer ${state.token}`;
-  //     return config;
-  //   },
-  //   (error) => {
-  //     return Promise.reject(error);
-  //   }
-  // );
+
   // response:
   authFetch.interceptors.response.use(
     (response) => {
@@ -296,6 +296,22 @@ const AppProvider = ({ children }) => {
 
   const changePage = (page) => {
     dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
+
+  const getCurrentUser = async () => {
+    dispatch({ type: GET_CURRENT_USER_BEGIN });
+    try {
+      const { data } = await authFetch('/auth/getCurrentUser');
+      const { user, location } = data;
+
+      dispatch({
+        type: GET_CURRENT_USER_SUCCESS,
+        payload: { user, location },
+      });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      logoutUser();
+    }
   };
 
   return (

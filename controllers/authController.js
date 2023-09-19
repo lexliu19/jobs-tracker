@@ -2,6 +2,7 @@ import User from '../models/user.js';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, UnauthenticatedError } from '../errors/index.js';
 import attachCookies from '../utils/attachCookies.js';
+import user from '../models/user.js';
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -69,4 +70,8 @@ const updateUser = async (req, res) => {
   });
 };
 
-export { register, login, updateUser };
+const getCurrentUser = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.userId });
+  res.status(StatusCodes.OK).json({ user, location: user.location });
+};
+export { register, login, updateUser, getCurrentUser };
