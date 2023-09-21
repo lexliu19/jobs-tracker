@@ -70,8 +70,17 @@ const updateUser = async (req, res) => {
   });
 };
 
+const logout = async (req, res) => {
+  res.cookie('token', 'logout', {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+
+  res.status(StatusCodes.OK).json({ msg: 'User log out' });
+};
+
 const getCurrentUser = async (req, res) => {
   const user = await User.findOne({ _id: req.user.userId });
   res.status(StatusCodes.OK).json({ user, location: user.location });
 };
-export { register, login, updateUser, getCurrentUser };
+export { register, login, logout, updateUser, getCurrentUser };
