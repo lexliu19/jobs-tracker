@@ -17,12 +17,9 @@ const Landing = () => {
         <div className="container page">
           <div className="info">
             <h1>
-              Your Personal <span>Job Tracker</span> Application
+              Your Personal <span>Job Tracking</span> Application
             </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
-              quas!
-            </p>
+            <p>Streamline Your Job Hunt Process With Jobfiy!</p>
 
             <Link to="/register" className="btn btn-hero">
               Login/Register
