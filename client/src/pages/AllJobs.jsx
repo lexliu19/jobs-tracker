@@ -1,5 +1,5 @@
 const AllJobs = () => {
-  return <h1>all jobs</h1>;
+  return <div>hello from all jobs page</div>;
 };
 
 export default AllJobs;

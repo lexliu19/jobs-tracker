@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import Wrapper from '../assets/wrappers/RegisterPage';
-
-import { FormRow } from '../components';
-export default function Register() {
+import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { FormRow, Logo } from '../components';
+const Register = () => {
   return (
     <Wrapper>
       <form className="form">
+        <Logo />
         <h4>Register</h4>
         <FormRow type="text" name="name" labelText="Name" />
-        <FormRow type="lastName" name="lastName" labelText="Last Name" />
+        <FormRow type="text" name="lastName" labelText="Last Name" />
         <FormRow type="text" name="location" />
         <FormRow type="email" name="email" />
         <FormRow type="password" name="password" />
@@ -25,4 +25,6 @@ export default function Register() {
       </form>
     </Wrapper>
   );
-}
+};
+
+export default Register;

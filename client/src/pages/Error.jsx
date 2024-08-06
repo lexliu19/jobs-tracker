@@ -1,16 +1,25 @@
-import { useRouteError, Link } from 'react-router-dom';
-import notFoundImage from '../../assets/images/not-found.svg';
+import { Link, useRouteError } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/ErrorPage';
-
-export default function Error() {
-  const error = useRouteError();
-  console.log(error); //undefined
-
+import errorImg from '../assets/images/not-found.svg';
+const Error = () => {
+  const err = useRouteError();
+  // console.log(err);
+  if (err.status === 404) {
+    return (
+      <Wrapper>
+        <div>
+          <img src={errorImg} alt="not found" />
+          <h3>WE cannot found the page you are looking for</h3>
+          <Link to="/dashboard">Back Home</Link>
+        </div>
+      </Wrapper>
+    );
+  }
   return (
-    <Wrapper>
-      <div>
-        <h3>Something went wrong.</h3>
-      </div>
-    </Wrapper>
+    <div>
+      <h3>Something went wrong :(</h3>
+    </div>
   );
-}
+};
+
+export default Error;

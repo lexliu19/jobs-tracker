@@ -13,7 +13,7 @@ const Wrapper = styled.section`
     border-top: 5px solid var(--primary-500);
   }
 
-  h3 {
+  h4 {
     text-align: center;
   }
   p {

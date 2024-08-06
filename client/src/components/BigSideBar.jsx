@@ -1,5 +1,5 @@
-const BigSideBar = () => {
-  return <div>bigsidebar</div>;
+const BigSidebar = () => {
+  return <div>Hello from BigSidebar</div>;
 };
 
-export default BigSideBar;
+export default BigSidebar;
