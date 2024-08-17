@@ -19,25 +19,16 @@ app.use(express.json());
 
 //job route:
 app.use('/api/v1/jobs', jobRouter);
-
-//error handler middleware:
-app.use(errorHandlerMiddleware);
-
-//test api:
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+//auth route:
+app.use('/api/v1/auth', authRouter);
 
 //not found middleware"
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-//error handling middleware:
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ message: 'Something went wrong' });
-});
+//error handler middleware:
+app.use(errorHandlerMiddleware);
 
 //run server:
 const port = process.env.PORT || 5101;
