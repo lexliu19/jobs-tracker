@@ -1,66 +1,51 @@
-import { nanoid } from 'nanoid';
-
-let jobs = [
-  { id: nanoid(), company: 'Apple', position: 'front end developer' },
-  { id: nanoid(), company: 'Google', position: 'back end developer' },
-  { id: nanoid(), company: 'Facebook', position: 'full stack developer' },
-];
-
-export const getAJob = async (req, res) => {
-  res.status(200).json({ jobs });
+import { NotFoundError } from '../errors/customErrors.js';
+import Job from '../models/JobModel.js';
+import StatusCodes from 'http-status-codes';
+export const getJobs = async (req, res) => {
+  const jobs = await Job.find({});
+  res.status(StatusCodes.OK).json({ jobs });
 };
 
 export const createJob = async (req, res) => {
   const { company, position } = req.body;
-  if (!company || !position) {
-    return res
-      .status(400)
-      .json({ message: 'Please provide company and position' });
-  }
 
-  const id = nanoid();
-  const job = { id, company, position };
-  jobs.push(job);
-  res.status(201).json({ job });
+  const job = await Job.create({ company, position });
+  res.status(StatusCodes.CREATED).json({ job });
 };
 
 export const getJob = async (req, res) => {
   const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
+  const job = await Job.findById(id);
 
   if (!job) {
-    return res.status(404).json({ message: 'Job not found' });
+    throw new NotFoundError('Job not found');
   }
 
-  res.status(200).json({ job });
+  res.status(StatusCodes.OK).json({ job });
 };
 
 export const updateJob = async (req, res) => {
   const { id } = req.params;
   const { company, position } = req.body;
-  if (!company || !position) {
-    return res
-      .status(400)
-      .json({ message: 'Please provide company or position' });
+
+  const updatedJob = await Job.findByIdAndUpdate(
+    id,
+    { company, position },
+    { new: true }
+  );
+  if (!updateJob) {
+    throw new NotFoundError('Job not found');
   }
 
-  const job = jobs.find((job) => job.id === id);
-  if (!job) {
-    return res.status(404).json({ message: 'Job not found' });
-  }
-
-  job.company = company;
-  job.position = position;
-  res.status(200).json({ message: 'Job modified', job });
+  res.status(StatusCodes.OK).json({ job: updatedJob });
 };
 
 export const deleteJob = async (req, res) => {
   const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
-  if (!job) {
-    res.status(404).json({ message: 'Job not found' });
-  }
+  const removedJob = await Job.findByIdAndDelete(id);
 
-  const jobs = jobs.filter((job) => job.id !== id);
-  res.status(200).json({ message: 'Job deleted' });
+  if (!removedJob) {
+    throw new NotFoundError('Job not found');
+  }
+  res.status(StatusCodes.OK).json({ message: 'Job removed' });
 };

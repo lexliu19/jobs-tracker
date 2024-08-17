@@ -2,8 +2,8 @@ import { Router } from 'express';
 const router = Router();
 
 import {
-  getJobs,
   getJob,
+  getJobs,
   createJob,
   updateJob,
   deleteJob,
