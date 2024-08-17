@@ -16,11 +16,6 @@ export const createJob = async (req, res) => {
 export const getJob = async (req, res) => {
   const { id } = req.params;
   const job = await Job.findById(id);
-
-  if (!job) {
-    throw new NotFoundError('Job not found');
-  }
-
   res.status(StatusCodes.OK).json({ job });
 };
 
@@ -33,9 +28,6 @@ export const updateJob = async (req, res) => {
     { company, position },
     { new: true }
   );
-  if (!updateJob) {
-    throw new NotFoundError('Job not found');
-  }
 
   res.status(StatusCodes.OK).json({ job: updatedJob });
 };
@@ -43,9 +35,5 @@ export const updateJob = async (req, res) => {
 export const deleteJob = async (req, res) => {
   const { id } = req.params;
   const removedJob = await Job.findByIdAndDelete(id);
-
-  if (!removedJob) {
-    throw new NotFoundError('Job not found');
-  }
   res.status(StatusCodes.OK).json({ message: 'Job removed' });
 };

@@ -17,11 +17,11 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
-//error handler middleware:
-app.use(errorHandlerMiddleware);
-
 //job route:
 app.use('/api/v1/jobs', jobRouter);
+
+//error handler middleware:
+app.use(errorHandlerMiddleware);
 
 //test api:
 app.get('/', (req, res) => {
