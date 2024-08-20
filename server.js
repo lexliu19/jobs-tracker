@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import * as dotenv from 'dotenv';
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
+import userRouter from './routes/userRouter.js';
 import mongoose from 'mongoose';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
@@ -24,7 +25,8 @@ app.use(express.json());
 app.use('/api/v1/jobs', authenticateUser, jobRouter);
 //auth route:
 app.use('/api/v1/auth', authRouter);
-
+//user route:
+app.use('/api/v1/users', authenticateUser, userRouter);
 //not found middleware"
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
