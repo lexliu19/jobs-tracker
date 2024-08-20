@@ -315,9 +315,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "client": "cd client && npm run dev",
     "setup": "npm i && cd client && npm i",
-    "dev": "nodemon server.js",
-    "watch": "npm --watch server.js"
+    "server": "nodemon server.js",
+    "watch": "npm --watch server.js",
+    "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "author": "",
   "license": "ISC",

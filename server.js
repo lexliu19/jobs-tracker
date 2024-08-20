@@ -21,6 +21,12 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cookieParser());
 
 app.use(express.json());
+
+//test route:
+app.get('/api/v1/test', (req, res) => {
+  res.json({ message: 'The api routing is working' });
+});
+
 //job route:
 app.use('/api/v1/jobs', authenticateUser, jobRouter);
 //auth route:
