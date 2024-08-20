@@ -7,6 +7,8 @@ import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
 import mongoose from 'mongoose';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -15,11 +17,11 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // middleware to log requests
 }
+app.use(cookieParser());
 
 app.use(express.json());
-
 //job route:
-app.use('/api/v1/jobs', jobRouter);
+app.use('/api/v1/jobs', authenticateUser, jobRouter);
 //auth route:
 app.use('/api/v1/auth', authRouter);
 

@@ -1,4 +1,4 @@
-import { register, login } from '../controllers/authController.js';
+import { register, login, logoutUser } from '../controllers/authController.js';
 import {
   validateRegisterInput,
   validateLoginInput,
@@ -12,5 +12,5 @@ router.get('/', (req, res) => {
 });
 router.post('/register', validateRegisterInput, register);
 router.post('/login', validateLoginInput, login);
-
+router.get('/logout', logoutUser);
 export default router;
