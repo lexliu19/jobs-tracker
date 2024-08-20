@@ -15,5 +15,12 @@ const authenticateUser = async (req, res, next) => {
     throw new UnauthorizedError('Unauthorized');
   }
 };
-
-export { authenticateUser };
+const authorizePermissions = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      throw new UnauthorizedError('Unauthorized');
+    }
+    next();
+  };
+};
+export { authenticateUser, authorizePermissions };
