@@ -1,4 +1,10 @@
-import { Link, redirect, useNavigation, useActionData } from 'react-router-dom';
+import {
+  Link,
+  redirect,
+  useNavigation,
+  useActionData,
+  Form,
+} from 'react-router-dom';
 import customFetch from '../utils/customFetch';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
@@ -7,29 +13,23 @@ import { toast } from 'react-toastify';
 export const loginAction = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData); //convert to key value pair
-  const errors = { msg: '' };
 
-  if (!data.password.length < 8) {
-    errors.msg = 'Password must be at least 8 characters';
-    return errors;
-  }
   try {
     await customFetch.post('/auth/login', data);
     toast.success('Login successful!');
     return redirect('/dashboard');
   } catch (error) {
-    errors.msg = error?.response?.data?.msg;
+    toast.error(error?.response?.data?.message);
     return error;
   }
 };
 const Login = () => {
-  const errors = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
   return (
     <Wrapper>
-      <form className="form">
+      <Form method="post" className="form">
         <Logo />
         <h4>Login</h4>
         <FormRow type="email" name="email" labelText="Email" />
@@ -40,7 +40,6 @@ const Login = () => {
         <button type="button" className="btn btn-block">
           Explore
         </button>
-        {errors && <p style={{ color: 'red' }}>{errors.msg}</p>}
 
         <p>
           Not a member yet?{' '}
@@ -48,7 +47,7 @@ const Login = () => {
             Register
           </Link>
         </p>
-      </form>
+      </Form>
     </Wrapper>
   );
 };
