@@ -1,11 +1,17 @@
 import Wrapper from '../assets/wrappers/Dashboard';
 import { Navbar, SmallSidebar, BigSidebar } from '../components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 
 import { useState, createContext, useContext } from 'react';
 
+export const loader = () => {
+  return "hey it's loadder";
+};
+
 const DashboardContext = createContext();
 const DashboardLayout = ({ isDarkThemeEnabled }) => {
+  const dataFromLoader = useLoaderData();
+  console.log(dataFromLoader);
   const user = { name: 'John' };
 
   const [showSidebar, setShowSidebar] = useState(false);

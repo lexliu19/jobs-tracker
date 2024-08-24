@@ -42,7 +42,7 @@ const Login = () => {
         </button>
 
         <p>
-          Not a member yet?{' '}
+          Not a member yet? 
           <Link to="/register" className="member-btn">
             Register
           </Link>
