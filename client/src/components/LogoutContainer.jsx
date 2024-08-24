@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDashboardContext } from '../pages/DashboardLayout';
 import Wrapper from '../assets/wrappers/LogoutContainer';
 import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
+
 const LogoutContainer = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { user, logoutUser } = useDashboardContext();
