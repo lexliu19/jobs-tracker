@@ -1,10 +1,4 @@
-import {
-  Link,
-  redirect,
-  useNavigation,
-  useActionData,
-  Form,
-} from 'react-router-dom';
+import { Link, redirect, useNavigation, Form } from 'react-router-dom';
 import customFetch from '../utils/customFetch';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
@@ -42,7 +36,7 @@ const Login = () => {
         </button>
 
         <p>
-          Not a member yet? 
+          Not a member yet?
           <Link to="/register" className="member-btn">
             Register
           </Link>
