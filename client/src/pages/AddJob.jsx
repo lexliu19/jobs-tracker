@@ -35,7 +35,7 @@ const AddJob = () => {
             type="text"
             labelText="Job Location"
             name="jobLocation"
-            defaultValue={user.location}
+            defaultValue={user?.location}
           />
           <FormRowSelect
             label="Job Status"
