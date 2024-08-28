@@ -1,6 +1,10 @@
 import express from 'express';
 import 'express-async-errors';
 
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
 import jobRouter from './routes/jobRouter.js';
@@ -12,14 +16,15 @@ import { authenticateUser } from './middleware/authMiddleware.js';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
-
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // middleware to log requests
 }
-app.use(cookieParser());
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, './public')));
 
+app.use(cookieParser());
 app.use(express.json());
 
 //test route:
@@ -41,7 +46,6 @@ app.use('*', (req, res) => {
 //error handler middleware:
 app.use(errorHandlerMiddleware);
 
-//run server:
 const port = process.env.PORT || 5101;
 
 try {

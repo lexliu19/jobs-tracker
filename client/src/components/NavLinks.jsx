@@ -1,14 +1,17 @@
 import { useDashboardContext } from '../pages/DashboardLayout';
+import links from '../utils/links';
 import { NavLink } from 'react-router-dom';
-import links from '../utils/links.jsx';
 
 const NavLinks = ({ isBigSidebar }) => {
-  const { toggleSidebar } = useDashboardContext();
-
+  const { toggleSidebar, user } = useDashboardContext();
   return (
     <div className="nav-links">
       {links.map((link) => {
         const { text, path, icon } = link;
+        const { role } = user;
+        //don't show admin tab when role is not admin
+        if (path === 'admin' && role !== 'admin') return;
+
         return (
           <NavLink
             to={path}
@@ -17,7 +20,7 @@ const NavLinks = ({ isBigSidebar }) => {
             onClick={isBigSidebar ? null : toggleSidebar}
             end
           >
-            <span>{icon} </span>
+            <span className="icon">{icon}</span>
             {text}
           </NavLink>
         );
@@ -25,5 +28,4 @@ const NavLinks = ({ isBigSidebar }) => {
     </div>
   );
 };
-
 export default NavLinks;
