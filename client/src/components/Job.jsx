@@ -29,11 +29,13 @@ const Job = ({
           <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${jobStatus}`}>{jobStatus}</div>
         </div>
+        {/* Use Link for navigation (e.g., Edit), use Form for data mutations
+        (e.g., Delete) */}
         <footer className="actions">
           <Link to={`../edit-job/${_id}`} className="btn edit-btn">
             Edit
           </Link>
-          <Form>
+          <Form method="post" action={`../delete-job/${_id}`}>
             <button type="submit" className="btn delete-btn">
               Delete
             </button>
