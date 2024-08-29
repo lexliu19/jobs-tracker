@@ -4,11 +4,13 @@ const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  avatar: String,
-  avatarPublicId: String,
+
   lastName: { type: String, default: '' },
   location: { type: String, default: 'remote' },
   role: { type: String, default: 'user', enum: ['user', 'admin'] },
+
+  avatar: String,
+  avatarPublicId: String,
 });
 
 // Add a toJSON method to the UserSchema to prevent the password from being returned in the response

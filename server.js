@@ -14,6 +14,7 @@ import mongoose from 'mongoose';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
 import cookieParser from 'cookie-parser';
+import cloudinary from 'cloudinary';
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,12 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // middleware to log requests
 }
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.resolve(__dirname, './public')));
 
