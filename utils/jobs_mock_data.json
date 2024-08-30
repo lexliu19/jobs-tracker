@@ -28,7 +28,7 @@
     "position": "Web Designer",
     "jobLocation": "San Antonio",
     "jobType": "part-time",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2024-03-30T04:20:41Z"
   },
   {
@@ -36,7 +36,7 @@
     "position": "UI Engineer",
     "jobLocation": "San Jose",
     "jobType": "contractor",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2024-08-17T13:32:42Z"
   },
   {
@@ -52,7 +52,7 @@
     "position": "Frontend Engineer",
     "jobLocation": "Philadelphia",
     "jobType": "full-time",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2023-10-18T20:15:14Z"
   },
   {
@@ -60,7 +60,7 @@
     "position": "Web developer",
     "jobLocation": "San Antonio",
     "jobType": "full-time",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2023-12-24T16:00:13Z"
   },
   {
@@ -108,7 +108,7 @@
     "position": "Backend Engineer",
     "jobLocation": "San Jose",
     "jobType": "internship",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2023-12-05T09:25:01Z"
   },
   {
@@ -116,7 +116,7 @@
     "position": "JavaScript Developer",
     "jobLocation": "Houston",
     "jobType": "internship",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2023-09-16T06:21:26Z"
   },
   {
@@ -156,7 +156,7 @@
     "position": "UI Engineer",
     "jobLocation": "Dallas",
     "jobType": "full-time",
-    "jobStatus": "offered",
+    "jobStatus": "interview",
     "createdAt": "2023-10-15T21:05:57Z"
   }
 ]
