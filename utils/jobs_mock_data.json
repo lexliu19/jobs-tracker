@@ -1,0 +1,162 @@
+[
+  {
+    "company": "Devbug",
+    "position": "Data Engineer",
+    "jobLocation": "Houston",
+    "jobType": "internship",
+    "jobStatus": "declined",
+    "createdAt": "2023-10-24T03:59:57Z"
+  },
+  {
+    "company": "Feedfire",
+    "position": "Junior Programmer",
+    "jobLocation": "Phoenix",
+    "jobType": "full-time",
+    "jobStatus": "declined",
+    "createdAt": "2024-08-12T00:22:36Z"
+  },
+  {
+    "company": "Gabtune",
+    "position": "Web Designer",
+    "jobLocation": "Dallas",
+    "jobType": "internship",
+    "jobStatus": "pending",
+    "createdAt": "2024-03-25T12:56:36Z"
+  },
+  {
+    "company": "Gigazoom",
+    "position": "Web Designer",
+    "jobLocation": "San Antonio",
+    "jobType": "part-time",
+    "jobStatus": "offered",
+    "createdAt": "2024-03-30T04:20:41Z"
+  },
+  {
+    "company": "Oyonder",
+    "position": "UI Engineer",
+    "jobLocation": "San Jose",
+    "jobType": "contractor",
+    "jobStatus": "offered",
+    "createdAt": "2024-08-17T13:32:42Z"
+  },
+  {
+    "company": "Kamba",
+    "position": "Frontend Engineer",
+    "jobLocation": "Phoenix",
+    "jobType": "part-time",
+    "jobStatus": "pending",
+    "createdAt": "2024-06-25T00:27:21Z"
+  },
+  {
+    "company": "Jabberbean",
+    "position": "Frontend Engineer",
+    "jobLocation": "Philadelphia",
+    "jobType": "full-time",
+    "jobStatus": "offered",
+    "createdAt": "2023-10-18T20:15:14Z"
+  },
+  {
+    "company": "Babbleset",
+    "position": "Web developer",
+    "jobLocation": "San Antonio",
+    "jobType": "full-time",
+    "jobStatus": "offered",
+    "createdAt": "2023-12-24T16:00:13Z"
+  },
+  {
+    "company": "Babbleopia",
+    "position": "Data Engineer",
+    "jobLocation": "Los Angeles",
+    "jobType": "contractor",
+    "jobStatus": "pending",
+    "createdAt": "2023-12-17T06:59:19Z"
+  },
+  {
+    "company": "Shufflester",
+    "position": "Web developer",
+    "jobLocation": "San Diego",
+    "jobType": "full-time",
+    "jobStatus": "declined",
+    "createdAt": "2024-08-16T02:13:30Z"
+  },
+  {
+    "company": "Jaxnation",
+    "position": "Frontend Engineer",
+    "jobLocation": "Los Angeles",
+    "jobType": "contractor",
+    "jobStatus": "declined",
+    "createdAt": "2023-12-29T10:13:22Z"
+  },
+  {
+    "company": "Kazio",
+    "position": "Junior Programmer",
+    "jobLocation": "Dallas",
+    "jobType": "contractor",
+    "jobStatus": "declined",
+    "createdAt": "2024-07-17T08:59:05Z"
+  },
+  {
+    "company": "Quimm",
+    "position": "Backend Engineer",
+    "jobLocation": "San Diego",
+    "jobType": "part-time",
+    "jobStatus": "declined",
+    "createdAt": "2023-11-18T00:00:05Z"
+  },
+  {
+    "company": "Meevee",
+    "position": "Backend Engineer",
+    "jobLocation": "San Jose",
+    "jobType": "internship",
+    "jobStatus": "offered",
+    "createdAt": "2023-12-05T09:25:01Z"
+  },
+  {
+    "company": "Avamm",
+    "position": "JavaScript Developer",
+    "jobLocation": "Houston",
+    "jobType": "internship",
+    "jobStatus": "offered",
+    "createdAt": "2023-09-16T06:21:26Z"
+  },
+  {
+    "company": "Mybuzz",
+    "position": "UI Engineer",
+    "jobLocation": "San Diego",
+    "jobType": "contractor",
+    "jobStatus": "pending",
+    "createdAt": "2024-08-12T23:03:59Z"
+  },
+  {
+    "company": "Npath",
+    "position": "JavaScript Developer",
+    "jobLocation": "Dallas",
+    "jobType": "contractor",
+    "jobStatus": "pending",
+    "createdAt": "2023-12-02T12:02:27Z"
+  },
+  {
+    "company": "Quatz",
+    "position": "UI Engineer",
+    "jobLocation": "Los Angeles",
+    "jobType": "part-time",
+    "jobStatus": "interview",
+    "createdAt": "2024-02-20T13:42:09Z"
+  },
+  {
+    "company": "Podcat",
+    "position": "Backend Engineer",
+    "jobLocation": "San Diego",
+    "jobType": "contractor",
+    "jobStatus": "interview",
+    "createdAt": "2023-12-15T22:48:09Z"
+  },
+  {
+    "company": "Skiba",
+    "position": "UI Engineer",
+    "jobLocation": "Dallas",
+    "jobType": "full-time",
+    "jobStatus": "offered",
+    "createdAt": "2023-10-15T21:05:57Z"
+  }
+]
