@@ -26,7 +26,7 @@ import { loader as EditJobLoader } from './pages/EditJob';
 import { loader as DashboardLoader } from './pages/DashboardLayout';
 import { loader as allJobsLoader } from './pages/AllJobs';
 import { loader as adminLoader } from './pages/Admin';
-
+import { loader as statsLoader } from './pages/Stats';
 const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('isDarkTheme') === 'true';
   document.body.classList.toggle('dark-theme', isDarkTheme);
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         path: 'delete-job/:id',
         action: deleteJobAction,
       },
-      { path: 'stats', element: <Stats /> },
+      { path: 'stats', element: <Stats />, loader: statsLoader },
       { path: 'profile', element: <Profile />, action: profileAction },
       { path: 'admin', element: <Admin />, loader: adminLoader },
     ],
