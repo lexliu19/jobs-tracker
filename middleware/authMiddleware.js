@@ -9,7 +9,8 @@ const authenticateUser = async (req, res, next) => {
   }
   try {
     const { userId, role } = verifyJWT(token);
-    const testUser = userId === 'testUserId';
+
+    const testUser = userId === '66d21a117fd96616ff1a690a'; // testUser Id in database
 
     req.user = { userId, role, testUser };
     next();
@@ -27,8 +28,10 @@ const authorizePermissions = (...roles) => {
 };
 
 const checkForTestUser = (req, res, next) => {
-  if (req.user.textUser) {
-    throw new BadRequestError('Read Only for demo ueser');
+  console.log('checking test user...');
+  console.log(req.user);
+  if (req.user.testUser) {
+    throw new BadRequestError('Read only for demo user');
   }
   next();
 };

@@ -18,7 +18,7 @@ export const profileAction = async ({ request }) => {
     toast.success('Profile updated successfully');
     return null;
   } catch (error) {
-    toast.error(error?.reponse?.data?.message);
+    toast.error(error?.response?.data?.message);
   }
   return null;
 };
