@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Wrapper from '../assets/wrappers/Dashboard';
 import { Navbar, SmallSidebar, BigSidebar } from '../components';
 import { Outlet, useLoaderData, redirect, useNavigate } from 'react-router-dom';

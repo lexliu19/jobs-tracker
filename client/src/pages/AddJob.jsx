@@ -1,7 +1,7 @@
-import { FormRow, FormRowSelect } from '../components';
+import { FormRow, SubmitBtn, FormRowSelect } from '../components';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { redirect, useOutletContext } from 'react-router-dom';
-import { Form, useNavigation } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants.js';
 import customFetch from '../utils/customFetch.js';
 import { toast } from 'react-toastify';
@@ -21,8 +21,6 @@ export const addJobAction = async ({ request }) => {
 
 const AddJob = () => {
   const { user } = useOutletContext();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
 
   return (
     <Wrapper>
@@ -49,13 +47,7 @@ const AddJob = () => {
             name="jobType"
             list={Object.values(JOB_TYPE)}
           />
-          <button
-            type="submit"
-            className="btn btn-block form-btn "
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'submitting...' : 'submit'}
-          </button>
+          <SubmitBtn formBtn />
         </div>
       </Form>
     </Wrapper>
