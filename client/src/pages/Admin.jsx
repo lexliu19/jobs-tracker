@@ -4,14 +4,13 @@ import Wrapper from '../assets/wrappers/StatsContainer.js';
 import { toast } from 'react-toastify';
 import { Stat } from '../components';
 import { FaSuitcaseRolling, FaCalendarCheck } from 'react-icons/fa';
-
+import toastOptions from '../utils/toastOptions.js';
 export const loader = async () => {
   try {
     const res = await customFetch.get('/users/admin/app-stats');
     return res.data;
   } catch (error) {
-    console.log(error);
-    toast.error("You're not authorized to view this page");
+    toast.error("You're not authorized to view this page", toastOptions);
     return redirect('/dashboard');
   }
 };

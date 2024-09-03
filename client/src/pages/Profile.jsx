@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Form } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import customFetch from '../utils/customFetch';
-
+import toastOptions from '../utils/toastOptions.js';
 export const profileAction = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('avatar');
@@ -15,10 +15,10 @@ export const profileAction = async ({ request }) => {
 
   try {
     await customFetch.patch('/users/update-user', formData);
-    toast.success('Profile updated successfully');
+    toast.success('Profile updated successfully', toastOptions);
     return null;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message, toastOptions);
   }
   return null;
 };

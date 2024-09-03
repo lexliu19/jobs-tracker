@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-
+import toastOptions from '../utils/toastOptions.js';
 import customFetch from '../utils/customFetch';
 import Wrapper from '../assets/wrappers/DashboardFormPage.js';
 import { redirect, useLoaderData, Form } from 'react-router-dom';
@@ -21,10 +21,10 @@ export const editJobAction = async ({ request, params }) => {
 
   try {
     await customFetch.patch(`/jobs/${params.id}`, data);
-    toast.success('Job edited successfully');
+    toast.success('Job edited successfully', toastOptions);
     return redirect('/dashboard/all-jobs');
   } catch (error) {
-    toast.error(error.response.data.message);
+    toast.error(error.response.data.message, toastOptions);
     return error;
   }
 };

@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useLoaderData } from 'react-router-dom';
 import { createContext } from 'react';
 import { useContext } from 'react';
+import toastOptions from '../utils/toastOptions.js';
 
 export const loader = async ({ request }) => {
   try {
@@ -15,7 +16,7 @@ export const loader = async ({ request }) => {
 
     return { data, searchValues: { ...params } };
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message, toastOptions);
     return error;
   }
 };

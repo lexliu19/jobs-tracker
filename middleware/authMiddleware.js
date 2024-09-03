@@ -28,8 +28,6 @@ const authorizePermissions = (...roles) => {
 };
 
 const checkForTestUser = (req, res, next) => {
-  console.log('checking test user...');
-  console.log(req.user);
   if (req.user.testUser) {
     throw new BadRequestError('Read only for demo user');
   }
