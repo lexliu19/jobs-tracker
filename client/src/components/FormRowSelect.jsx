@@ -1,21 +1,31 @@
-const FormRowSelect = ({ name, label, list, defaultVal = '' }) => {
+const FormRowSelect = ({
+  name,
+  labelText,
+  list,
+  defaultValue = '',
+  onChange,
+}) => {
   return (
     <div className="form-row">
-      <label className="form-label">{label || name}</label>
+      <label htmlFor={name} className="form-label">
+        {labelText || name}
+      </label>
       <select
-        id={name}
         name={name}
+        id={name}
         className="form-select"
-        defaultValue={defaultVal}
+        defaultValue={defaultValue}
+        onChange={onChange}
       >
-        {list.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
-        ))}
+        {list.map((itemValue) => {
+          return (
+            <option key={itemValue} value={itemValue}>
+              {itemValue}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
 };
-
 export default FormRowSelect;
