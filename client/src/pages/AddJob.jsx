@@ -6,6 +6,7 @@ import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants.js';
 import customFetch from '../utils/customFetch.js';
 import { toast } from 'react-toastify';
 import toastOptions from '../utils/toastOptions.js';
+
 export const addJobAction = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);

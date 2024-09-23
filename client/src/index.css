@@ -14,16 +14,16 @@ html {
 
 :root {
   /* colors */
-  --primary-50: #e0fcff;
-  --primary-100: #bef8fd;
-  --primary-200: #87eaf2;
-  --primary-300: #54d1db;
-  --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
-  --primary-600: #14919b;
-  --primary-700: #0e7c86;
-  --primary-800: #0a6c74;
-  --primary-900: #044e54;
+  --primary-50: #90f0ff;
+  --primary-100: #5ae9ff;
+  --primary-200: #36fcff;
+  --primary-300: #31d7f1;
+  --primary-400: #0ccdeb;
+  --primary-500: #03c0dd;
+  --primary-600: #03c0dd;
+  --primary-700: #00b1cd;
+  --primary-800: #01b3ce;
+  --primary-900: #008ca1;
 
   /* grey */
   --grey-50: #f8fafc;
@@ -43,6 +43,7 @@ html {
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
+  --yellow-light: #fccb1d;
 
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
@@ -107,7 +108,7 @@ h5 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
+  font-size: clamp(2rem, 5vw, 4rem); /* Large heading */
 }
 
 h2 {

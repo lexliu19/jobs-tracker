@@ -1,37 +1,30 @@
 import { StatusCodes } from 'http-status-codes';
 
 export class NotFoundError extends Error {
-  constructor(message = 'Not Found') {
+  constructor(message) {
     super(message);
     this.name = 'NotFoundError';
     this.statusCode = StatusCodes.NOT_FOUND;
-    this.message = message;
   }
 }
-
 export class BadRequestError extends Error {
-  constructor(message = 'Bad Request') {
+  constructor(message) {
     super(message);
     this.name = 'BadRequestError';
-    this.message = message;
     this.statusCode = StatusCodes.BAD_REQUEST;
   }
 }
-
-export class UnauthorizedError extends Error {
-  constructor(message = 'Unauthorized') {
+export class UnauthenticatedError extends Error {
+  constructor(message) {
     super(message);
-    this.name = 'UnauthorizedError';
-    this.message = message;
+    this.name = 'UnauthenticatedError';
     this.statusCode = StatusCodes.UNAUTHORIZED;
   }
 }
-
-export class ForbiddenError extends Error {
-  constructor(message = 'Forbidden') {
+export class UnauthorizedError extends Error {
+  constructor(message) {
     super(message);
-    this.name = 'ForbiddenError';
-    this.message = message;
+    this.name = 'UnauthorizedError';
     this.statusCode = StatusCodes.FORBIDDEN;
   }
 }

@@ -11,7 +11,7 @@ export const loader = async ({ params }) => {
     const { data } = await customFetch.get(`/jobs/${params.id}`);
     return data;
   } catch (error) {
-    toast.error(error.response.data.message);
+    toast.error(error?.response?.data?.message, toastOptions);
     return redirect('/dashboard/all-jobs');
   }
 };
@@ -24,7 +24,7 @@ export const editJobAction = async ({ request, params }) => {
     toast.success('Job edited successfully', toastOptions);
     return redirect('/dashboard/all-jobs');
   } catch (error) {
-    toast.error(error.response.data.message, toastOptions);
+    toast.error(error?.response?.data?.message, toastOptions);
     return error;
   }
 };

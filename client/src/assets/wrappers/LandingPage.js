@@ -16,9 +16,9 @@ const Wrapper = styled.section`
     margin-top: -3rem;
   }
   h1 {
-    font-weight: 700;
+    font-weight: 800;
     span {
-      color: var(--primary-500);
+      color: var(--yellow-light);
     }
     margin-bottom: 1.5rem;
   }
@@ -39,8 +39,8 @@ const Wrapper = styled.section`
   }
   @media (min-width: 992px) {
     .page {
-      grid-template-columns: 1fr 400px;
-      column-gap: 3rem;
+      grid-template-columns: 1fr 600px;
+      column-gap: 1rem;
     }
     .main-img {
       display: block;
