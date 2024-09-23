@@ -15,9 +15,9 @@ const Landing = () => {
             Your <span>Job</span> Hunting Helper
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio,
-            sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Laboriosam, voluptas?
+            Streamline your job search process with ease. Track applications,
+            schedule interviews, and manage your job hunting journey all in one
+            place.
           </p>
           <Link to="/register" className="btn register-link">
             Register

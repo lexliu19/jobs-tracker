@@ -726,7 +726,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       display: block;
     }
   }
-`,wte="/assets/main-1VjF5Djm.svg",Ste=()=>E.jsxs(xte,{children:[E.jsx("nav",{children:E.jsx(zo,{})}),E.jsxs("div",{className:"container page",children:[E.jsxs("div",{className:"info",children:[E.jsxs("h1",{children:["Your ",E.jsx("span",{children:"Job"})," Hunting Helper"]}),E.jsx("p",{children:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, voluptas?"}),E.jsx(bi,{to:"/register",className:"btn register-link",children:"Register"}),E.jsx(bi,{to:"/login",className:"btn ",children:"Login / Demo User"})]}),E.jsx("img",{src:wte,alt:"job hunt",className:"img main-img"})]})]}),N$=dt.section`
+`,wte="/assets/main-1VjF5Djm.svg",Ste=()=>E.jsxs(xte,{children:[E.jsx("nav",{children:E.jsx(zo,{})}),E.jsxs("div",{className:"container page",children:[E.jsxs("div",{className:"info",children:[E.jsxs("h1",{children:["Your ",E.jsx("span",{children:"Job"})," Hunting Helper"]}),E.jsx("p",{children:"Streamline your job search process with ease. Track applications, schedule interviews, and manage your job hunting journey all in one place."}),E.jsx(bi,{to:"/register",className:"btn register-link",children:"Register"}),E.jsx(bi,{to:"/login",className:"btn ",children:"Login / Demo User"})]}),E.jsx("img",{src:wte,alt:"job hunt",className:"img main-img"})]})]}),N$=dt.section`
   min-height: 100vh;
   display: grid;
   align-items: center;
