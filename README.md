@@ -6,4 +6,4 @@ See Live demo [here](https://jobs-tracker-wjtf.onrender.com/).
 
 ![landing page](./screenshots/landing.png)
 ![Jobs](./screenshots/jobs.png)
-![Application Stats](./screenshots/stats.png)
+![Application Stats](./screenshots/Stats.png)
