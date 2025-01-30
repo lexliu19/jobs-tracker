@@ -4,7 +4,7 @@ import 'express-async-errors';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
-
+import cors from 'cors';
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
 import jobRouter from './routes/jobRouter.js';
@@ -22,6 +22,14 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); // middleware to log requests
 }
+
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    credentials: true,
+  })
+);
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_KEY,

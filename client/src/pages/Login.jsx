@@ -4,6 +4,7 @@ import { Logo, SubmitBtn, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import { toast } from 'react-toastify';
 import toastOptions from '../utils/toastOptions.js';
+
 export const loginAction = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData); //convert to key value pair
@@ -24,6 +25,7 @@ const Login = () => {
       email: 'test@test.com',
       password: 'password123',
     };
+    console.log('data', data);
 
     try {
       await customFetch.post('/auth/login', data);

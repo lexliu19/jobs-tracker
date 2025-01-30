@@ -26,3 +26,6 @@ yarn-error.log*
 
 .eslintrc
 .env
+*.zip
+
+public/
